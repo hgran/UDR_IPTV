@@ -87,11 +87,12 @@ phyint br4 downstream ratelimit 0 threshold 1
 8. Create systemd config: /etc/systemd/system/igmpproxy.service
 ```
 [Unit]
-Description=IGMP proxy
-After=network.target
+Description=igmpproxy
 
 [Service]
-ExecStart=/usr/sbin/igmpproxy /etc/igmpproxy.conf
+User=root
+ExecStart=/usr/sbin/igmpproxy /etc/igmpproxy.conf -d -vv
+Restart=always
 
 [Install]
 WantedBy=multi-user.target
