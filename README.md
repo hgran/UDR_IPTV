@@ -91,7 +91,7 @@ Description=igmpproxy
 
 [Service]
 User=root
-ExecStart=/usr/sbin/igmpproxy /etc/igmpproxy.conf -d -vv
+ExecStart=/usr/sbin/igmpproxy /etc/igmpproxy.conf
 Restart=always
 
 [Install]
