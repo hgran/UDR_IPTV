@@ -84,5 +84,19 @@ phyint eth4 upstream  ratelimit 0  threshold 1
 phyint br4 downstream ratelimit 0 threshold 1
 ```
 7. Set the Port Profile on the port where you have the setop box to use the IPTV LAN
-8. Create systemd config
-9. Start the igmp proxy systemd service
+8. Create systemd config: /etc/systemd/system/igmpproxy.service
+```
+[Unit]
+Description=IGMP proxy
+After=network.target
+
+[Service]
+ExecStart=/usr/sbin/igmpproxy /etc/igmpproxy.conf
+
+[Install]
+WantedBy=multi-user.target
+```
+10. Start the igmp proxy systemd service
+```
+systemctl start igmpproxy.service
+```
